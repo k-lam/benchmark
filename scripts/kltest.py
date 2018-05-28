@@ -8,7 +8,7 @@ import shlex
 import subprocess
 import gc
 import torchvision.models as models
-from utils import get_env_pytorch_examples, cmd_string, model_names
+from utils import get_env_pytorch_examples
 import torchvision
 
 model_names = sorted(name for name in models.__dict__
@@ -55,6 +55,16 @@ def execution(cmd, log_path):
     log_file.close()
 
 
+def cmd_string(examples_home, model, data_path):
+    # lr = 0.1
+    # if model in ['alexnet', 'vgg11', 'vgg11_bn', 'vgg13_bn',
+    #              'vgg16', 'vgg16_bn', 'vgg19', 'vgg19_bn']:
+    #     lr = 0.01
+
+    cmd = ' '.join(['python', examples_home, '-a', model, data_path])
+    return cmd
+
+
 def main():
     global args, temp_dir
     args = parser.parse_args()
@@ -63,7 +73,7 @@ def main():
 
     log_path = args.log_path
     examples_home = get_env_pytorch_examples()
-    imagenet = join(examples_home, 'imagenet', 'main.py')
+    imagenet = join(examples_home, 'kl', 'benchmark_test.py')
     nets = config_models(args.arch)
 
     for i in tqdm(range(len(nets))):
