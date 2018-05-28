@@ -25,13 +25,13 @@ parser.add_argument('--filename', type=str, default='perf_test',
 parser.add_argument('--data-dir', type=str, required=True,
                     help='path to imagenet dataset')
 
-def log_init():
-    if not os.path.exists(temp_dir):
-        os.makedirs(temp_dir)
-
-    # logging
-    log_filename = args.filename + '.out'
-    logging.basicConfig(filename=join(temp_dir, log_filename), level=20)
+# def log_init():
+#     if not os.path.exists(temp_dir):
+#         os.makedirs(temp_dir)
+#
+#     # logging
+#     log_filename = args.filename + '.out'
+#     logging.basicConfig(filename=join(temp_dir, log_filename), level=20)
 
 
 def config_models(model):
@@ -69,7 +69,7 @@ def main():
     global args, temp_dir
     args = parser.parse_args()
 
-    log_init()
+    # log_init()
 
     log_path = args.log_path
     examples_home = get_env_pytorch_examples()
@@ -81,7 +81,7 @@ def main():
         # execution
         cmd = cmd_string(imagenet, model, args.data_dir)
         execution(cmd, log_path)
-        logging.info('{}'.format(model))
+        # logging.info('{}'.format(model))
 
 
 if __name__ == '__main__':
