@@ -7,7 +7,9 @@ from datetime import datetime
 import logging
 from tqdm import tqdm
 from utils import get_env_pytorch_examples, config_runs, cmd_string, execution, model_names
+import torchvision
 
+torchvision.models.alexnet()
 
 parser = argparse.ArgumentParser(description="PyTorch model accuracy benchmark.")
 parser.add_argument('--repeat', type=int, default=5,
