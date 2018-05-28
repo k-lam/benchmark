@@ -45,7 +45,7 @@ def execution(cmd, log_path):
 
     # logging
     log_file = open(log_path, "a+")
-    log_err_file = open(log_path + '.err', 'w')
+    log_err_file = open(log_path + '.err', 'a+')
     # log_file.write(cmd)
     # log_file.write('\n')
 
