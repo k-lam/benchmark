@@ -45,11 +45,11 @@ def execution(cmd, log_path):
 
     # logging
     log_file = open(log_path, "a+")
-    log_file.write(cmd)
-    log_file.write('\n')
+    # log_file.write(cmd)
+    # log_file.write('\n')
 
     exec_command = shlex.split(cmd)
-    proc = subprocess.Popen(exec_command, stdout=log_file, stderr=subprocess.STDOUT)
+    proc = subprocess.Popen(exec_command, stdout=log_file, stderr=log_file + '.err')
     proc.wait()
     return_code = proc.returncode
     log_file.close()
