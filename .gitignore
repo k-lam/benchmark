@@ -4,3 +4,5 @@ PyTorch
 */**/*.pyc
 *.out
 .idea
+result.log
+result.log*
